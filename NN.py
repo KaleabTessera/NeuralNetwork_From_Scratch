@@ -19,7 +19,7 @@ class NN:
         self.w2 =  np.random.rand(numOfNodesPerHiddenLayer[0],numOfNodesPerHiddenLayer[1])
         self.w3 =  np.random.rand(numOfNodesPerHiddenLayer[1],y.shape[0])
 
-        if(showShapeOfNN)
+        if(showShapeOfNN):
             print(self.w1.shape)
             print(self.w2.shape)
             print(self.w3.shape)
