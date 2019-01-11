@@ -9,7 +9,7 @@ import numpy as np
  
 # NN class
 class NN:
-    def __init__(self,X,numHiddenLayers,numOfNodesPerHiddenLayer,y):
+    def __init__(self,X,numHiddenLayers,numOfNodesPerHiddenLayer,y,showShapeOfNN=False):
         self.X = X
         self.numHiddenLayers = numHiddenLayers
         self.numOfNodesPerHiddenLayer = numOfNodesPerHiddenLayer
@@ -19,9 +19,10 @@ class NN:
         self.w2 =  np.random.rand(numOfNodesPerHiddenLayer[0],numOfNodesPerHiddenLayer[1])
         self.w3 =  np.random.rand(numOfNodesPerHiddenLayer[1],y.shape[0])
 
-        print(self.w1.shape)
-        print(self.w2.shape)
-        print(self.w3.shape)
+        if(showShapeOfNN)
+            print(self.w1.shape)
+            print(self.w2.shape)
+            print(self.w3.shape)
  
  
 def main():
