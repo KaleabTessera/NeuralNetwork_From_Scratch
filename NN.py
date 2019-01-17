@@ -38,19 +38,16 @@ class NN:
         h2 = self.sigmoid(np.dot(h1,self.w2)     + b2)
         
         #Output
-        self.pred =  np.dot(h2,self.w3)     + b3
+        self.pred = self.sigmoid(np.dot(h2,self.w3)     + b3)
  
 
     def loss(self):
-        # L2 Norm
-        n = self.X.shape[0]
-        self.error = 1/n * np.sum((self.y - self.pred) ** 2)
+        self.error= (-self.y * np.log(self.pred) - (1 - self.y) * np.log(1 - self.pred)).mean()
         print("Loss: ",self.error)
-
 
 def main():
     X = np.ones((100,4), dtype=np.int16 )
-    y = np.random.rand(100,2)
+    y = np.random.rand(100,1)
     
     numHiddenLayers = 2
     numNodesPerLayer = [10,10]
