@@ -43,8 +43,9 @@ class NN:
 
     def loss(self):
         # L2 Norm
-        self.error = np.sum(self.y - self.pred) ** 2
-        print(self.error)
+        n = self.X.shape[0]
+        self.error = 1/n * np.sum((self.y - self.pred) ** 2)
+        print("Loss: ",self.error)
 
 
 def main():
