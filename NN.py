@@ -53,7 +53,9 @@ class NN:
         return 2 *(self.y - self.pred)
       
     def sigmoid_der(self,a):
-        return np.dot(self.sigmoid(a),(1 - self.sigmoid(a)).T)
+        # return np.dot(self.sigmoid(a),(1 - self.sigmoid(a)).T)
+        return a * (1.0 - a) 
+        # return (1 / (1 + np.exp(-a)))
 
     def backprop(self,learning_rate=0.1):
         # print("testtttttttttt")
@@ -62,7 +64,7 @@ class NN:
         dS3 = np.dot(self.h2,self.w3)
         dy_DS3 = self.sigmoid_der(dS3)
         dJQ_dy = self.loss_dir()
-        dJQ_dW3 = dJQ_dy.T.dot(dy_DS3).dot(dS3_dW3)
+        dJQ_dW3 = np.multiply(dy_DS3,dJQ_dy).T.dot(dS3_dW3)
 #         print("dJQ_dW3")
 #         print(dJQ_dW3)
 
@@ -75,7 +77,7 @@ class NN:
 #         dJQ_dh2 = self.sigmoid_der(dS3).dot(dJQ_dy).dot(self.w3.T)
 #         dJQ_dh2 = dJQ_dy.T.dot(dy_DS3).dot(dS3_dh2) #Check Shape
         dJQ_dh2 = dS3_dh2.dot(dJQ_dy.T).dot(dy_DS3) #Check Shape
-        dJQ_dW2 = dJQ_dh2.dot(dh2_dS2).dot(dS2_dW2)
+        dJQ_dW2 = dJQ_dh2.T.dot(np.multiply(dh2_dS2,dS2_dW2).T)
 #         print("dJQ_dW2")
 #         print(dJQ_dW2)
         
@@ -88,7 +90,7 @@ class NN:
         dh2_dS2 = self.sigmoid_der(dS2)
         dS3_dh2 = self.w3
         
-        dJQ_dh1 = dJQ_dh2.dot(dh2_dS2).T.dot(dS2_dh1)
+        dJQ_dh1 = dJQ_dh2.T.dot(dS2_dh1).dot(dh2_dS2.T)
         
 #         dJQ_dh1 = dh2_dS2.dot(dJQ_dh2).dot(self.w2)
         dJQ_dW1 =dJQ_dh1.T.dot(dh1_dS1).dot(dS1_dW1)
@@ -131,7 +133,7 @@ def main():
     # # Create the Scaler object
     scaler = preprocessing.StandardScaler() 
     X = scaler.fit_transform(X)
-    print(X)
+    # print(X)
 
     # X = X / np.sqrt((np.sum(X**2)))
     y = data[:,4].reshape(99,1)
