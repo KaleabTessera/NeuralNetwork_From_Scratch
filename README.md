@@ -2,10 +2,10 @@
 A Fully-connected Neural Network, build from scratch using only Numpy (and Sklean for standardizing the data).
 
 ## How to Run
-python3 NN.py
+python NN.py / python3 NN.py
 
 ### Prerequisites
-- Numpy
+- Numpy.
 - Python/Python3.
 - Sklearn.
 
