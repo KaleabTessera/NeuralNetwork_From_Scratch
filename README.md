@@ -1,5 +1,5 @@
 # NeuralNetwork_From_Scratch
-An implementation of a Fully-connected Neural Network build from Scratch - only using Numpy. 
+A Fully-connected Neural Network, build from scratch using only Numpy (and Sklean for standardizing the data).
 
 ## How to Run
 python3 NN.py
@@ -7,3 +7,4 @@ python3 NN.py
 ### Prerequisites
 - Numpy
 - Python/Python3.
+- Sklearn.
