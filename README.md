@@ -8,3 +8,6 @@ python3 NN.py
 - Numpy
 - Python/Python3.
 - Sklearn.
+
+Digram can be found [here]{./NN.svg}
+<img src="./NN.svg">
