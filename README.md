@@ -9,5 +9,5 @@ python3 NN.py
 - Python/Python3.
 - Sklearn.
 
-Digram can be found [here]{./NN.svg}
+Digram can be found [here](./NN.svg)
 <img src="./NN.svg">
